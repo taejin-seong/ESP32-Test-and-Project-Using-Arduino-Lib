@@ -8,5 +8,5 @@
   "hardwareFolders": "D:\\Arduino\\hardware,C:\\Users\\user\\AppData\\Local\\Arduino15\\packages",
   "otherLibrariesFolders": "C:\\Users\\user\\Documents\\Arduino\\libraries",
   "runtime.ide.version": "10819",
-  "sketchLocation": "d:\\ESP32\\ESP32 DevKitC V4\\LED Blink\\LED_Blink_Test.ino"
+  "sketchLocation": "d:\\ESP32\\ESP32 DevKitC V4\\test\\test.ino"
 }
