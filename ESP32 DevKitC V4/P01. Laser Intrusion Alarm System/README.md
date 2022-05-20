@@ -42,8 +42,44 @@
 
 <br>
 
-### 동작 결과
+## 동작 결과
+### 물체가 감지되지 않은 경우
+* 클라이언트 측
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/70312248/169500293-0bd4d081-5813-4ffc-8116-074d3845abd9.png" width="802" height="322"/>  
+</p> 
+<br>
 
 
+* 서버 측 
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/70312248/169500420-defde7cf-6fe1-420d-bad6-d4154dda626d.png" width="590" height="105"/>  
+</p> 
+<br>
+
+
+### 물체가 감지된 경우
+
+* 클라이언트 측 경보알림 전송
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/70312248/169499224-aa6df926-6dae-46c2-bc3b-7ef7cc72a00f.png" width="802" height="322"/>  
+</p> 
+<br>
+
+
+* 서버 측 경보알림 수신
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/70312248/169499486-934dbc09-91a0-4cbd-a12a-f568cd2506eb.png" width="590" height="105"/>  
+</p> 
+<br>
+
+
+
+## 동작 영상
+
+
+
+
+https://user-images.githubusercontent.com/70312248/169500917-b6c53a6e-be3f-4905-a59e-d3ee5430e30a.mp4
 
 
