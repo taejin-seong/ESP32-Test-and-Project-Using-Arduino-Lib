@@ -12,6 +12,8 @@
 
 ## Folder Naming <br>
 * **Pxx.[Project File Name]**     
-  + **P** : Porject
+  + **P**  : Porject
+  + **xx** : Number
 * **Txx.[Test File Name]**
-  + **T** : Test
+  + **T**  : Test
+  + **xx** : Number
