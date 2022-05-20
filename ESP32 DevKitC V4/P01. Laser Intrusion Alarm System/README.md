@@ -1,3 +1,12 @@
+
+
+<br>
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/70312248/169498179-292768f4-47dc-42de-84a5-a47a84af742c.png" width="876" height="395"/>  
+</p> 
+<br>
+
+
 ## 개발환경
 ### IDE
 * VSCode 
@@ -30,4 +39,11 @@
 <br>
 
 * 레이저 모듈에 물체가 감지되면 서버로 날짜,시간과 함께 경보알림을 전송함.
+
+<br>
+
+### 동작 결과
+
+
+
 
