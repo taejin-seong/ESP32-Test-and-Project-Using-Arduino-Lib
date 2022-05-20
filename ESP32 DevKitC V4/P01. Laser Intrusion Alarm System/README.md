@@ -15,3 +15,19 @@
 
 ## 하드웨어 구성
 
+<br>
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/70312248/169490791-545be42b-c66b-495a-9576-87ba9d80126a.png" width="812" height="504"/>  
+</p> 
+<br>
+
+## 동작 방식
+
+<br>
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/70312248/169496612-4b714f00-ed61-46d8-9082-d649d9f7a49d.png" width="928" height="476"/>  
+</p> 
+<br>
+
+* 레이저 모듈에 물체가 감지되면 서버로 날짜,시간과 함께 경보알림을 전송함.
+
