@@ -1,91 +1,81 @@
-# 1 "d:\\ESP32\\ESP32 DevKitC V4\\test\\test.ino"
-# 2 "d:\\ESP32\\ESP32 DevKitC V4\\test\\test.ino" 2
-# 3 "d:\\ESP32\\ESP32 DevKitC V4\\test\\test.ino" 2
+# 1 "d:\\ESP32\\ESP32 DevKitC V4\\T05. Basic OTA DFU Src\\Basic_OTA_DFU_Src_Test.ino"
+# 2 "d:\\ESP32\\ESP32 DevKitC V4\\T05. Basic OTA DFU Src\\Basic_OTA_DFU_Src_Test.ino" 2
+# 3 "d:\\ESP32\\ESP32 DevKitC V4\\T05. Basic OTA DFU Src\\Basic_OTA_DFU_Src_Test.ino" 2
+# 4 "d:\\ESP32\\ESP32 DevKitC V4\\T05. Basic OTA DFU Src\\Basic_OTA_DFU_Src_Test.ino" 2
+# 5 "d:\\ESP32\\ESP32 DevKitC V4\\T05. Basic OTA DFU Src\\Basic_OTA_DFU_Src_Test.ino" 2
 
+/* LED */
 
+int ledState = 0x0;
 
-
-
-
-
-const char* ssid = "Home"; //WiFi SSID
-const char* password = "257535411186f"; //WiFi Password
-const uint16_t port = 9190; //Port Number
-const char * host = "192.168.0.2"; //Host IP
-
-struct tm timeinfo; // time infomation struct 
-
-const char* ntpServer = "kr.pool.ntp.org";
-const long gmtOffset_sec = 32400; // South Korea : GMT+9 = 9*32400 = 32400
-const int summerTime = 0; // South Korea : No Summer Time
-
-const uint8_t pwmChannel = 0;
-uint8_t ledState = 0x0;
-uint16_t cdsValue;
+const char* ssid = "//";
+const char* password = "//";
 
 void setup() {
+  Serial.begin(115200);
+  Serial.println("Booting");
+  WiFi.mode(WIFI_MODE_STA);
+  WiFi.begin(ssid, password);
+  while (WiFi.waitForConnectResult() != WL_CONNECTED) {
+    Serial.println("Connection Failed! Rebooting...");
+    delay(5000);
+    ESP.restart();
+  }
 
-    /* WiFi */
-    Serial.begin(115200);
-    WiFi.begin(ssid, password);
+  // Port defaults to 3232
+  // ArduinoOTA.setPort(3232);
 
-    while (WiFi.status() != WL_CONNECTED)
-    {
-        delay(500);
-        Serial.println("...");
-    }
+  // Hostname defaults to esp3232-[MAC]
+  // ArduinoOTA.setHostname("myesp32");
 
-    Serial.println("WiFi connected with IP: ");
-    Serial.println(WiFi.localIP());
+  // No authentication by default
+  // ArduinoOTA.setPassword("admin");
 
-    configTime(gmtOffset_sec, summerTime, ntpServer);
+  // Password can be set with it's md5 value as well
+  // MD5(admin) = 21232f297a57a5a743894a0e4a801fc3
+  // ArduinoOTA.setPasswordHash("21232f297a57a5a743894a0e4a801fc3");
 
-    /* LED, Laser, Piezo */
-    pinMode(18 /*ESP32 pin GPIO18 connected to LED*/, 0x03);
-    pinMode(17 /*ESP32 pin GPIO36 connected to Laser Sensor */, 0x03);
-    ledcAttachPin(26 /*ESP32 pin GIOP26 (PWM) connected to Piezo Buzzer       */, pwmChannel); // Attach channel to Piezo pin
+  ArduinoOTA
+    .onStart([]() {
+      String type;
+      if (ArduinoOTA.getCommand() == 0)
+        type = "sketch";
+      else // U_SPIFFS
+        type = "filesystem";
+
+      // NOTE: if updating SPIFFS this would be the place to unmount SPIFFS using SPIFFS.end()
+      Serial.println("Start updating " + type);
+    })
+    .onEnd([]() {
+      Serial.println("\nEnd");
+    })
+    .onProgress([](unsigned int progress, unsigned int total) {
+      Serial.printf("Progress: %u%%\r", (progress / (total / 100)));
+    })
+    .onError([](ota_error_t error) {
+      Serial.printf("Error[%u]: ", error);
+      if (error == OTA_AUTH_ERROR) Serial.println("Auth Failed");
+      else if (error == OTA_BEGIN_ERROR) Serial.println("Begin Failed");
+      else if (error == OTA_CONNECT_ERROR) Serial.println("Connect Failed");
+      else if (error == OTA_RECEIVE_ERROR) Serial.println("Receive Failed");
+      else if (error == OTA_END_ERROR) Serial.println("End Failed");
+    });
+
+  ArduinoOTA.begin();
+
+  Serial.println("Ready");
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());
+
+  /* LED */
+  pinMode(18 /*ESP32 pin GPIO18 connected to LED*/, 0x03);
 }
 
 void loop() {
+  ArduinoOTA.handle();
 
-    WiFiClient client;
-
-    if (!client.connect(host, port))
-    {
-        Serial.println("Connection to host failed");
-        delay(1000);
-
-        return;
-    }
-
-    Serial.println("Connected to server successful!");
-    Serial.println("Intruder Alert System Start...");
-
-    digitalWrite(17 /*ESP32 pin GPIO36 connected to Laser Sensor */, 0x1); // Open the laser head
-    cdsValue = analogRead(35 /*ESP32 pin GPIO35 (ADC1_7) connected to Light Sensor*/); // Read CDS Sensor Value
-
-//    Serial.println(cdsValue);     // Check CDS Sensor Value
-
-    if (cdsValue < 2200)
-    {
-        if (!getLocalTime(&timeinfo))
-        {
-            client.println("Failed to obtain time");
-        }
-
-        /* Data & Time */
-        client.print(&timeinfo,"%Y-%B-%d %A %H:%M:%S");
-        client.print("Intruder Detected!");
-
-        /* beep & warning light */
-        digitalWrite(18 /*ESP32 pin GPIO18 connected to LED*/, ledState);
-        ledcWriteNote(pwmChannel, NOTE_G, 5);
-        ledState = !ledState;
-        delay(300);
-
-        client.stop();
-    }
-    /* init */
-    digitalWrite(18 /*ESP32 pin GPIO18 connected to LED*/, 0);
-    ledcWrite(pwmChannel, 0);
+  /* LED Blink */
+  digitalWrite(18 /*ESP32 pin GPIO18 connected to LED*/, ledState);
+  ledState = !ledState;
+  delay(1000);
 }
