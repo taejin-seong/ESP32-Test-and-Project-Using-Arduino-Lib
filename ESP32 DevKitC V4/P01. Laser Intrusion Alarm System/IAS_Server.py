@@ -16,6 +16,5 @@ while True:
         else:
             # default utf-8
             decoded_content = content.decode(encoding='utf-8')
-       #     decoded_content.strip("♪")
             print(decoded_content)
     client.close()
