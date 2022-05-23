@@ -27,4 +27,8 @@
   + [T03. ESP32_TCP_Client](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T03.%20ESP32_TCP_Client)
   + [T03. Python_TCP_Server](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T03.%20Python_TCP_Server)
   + [T04. Piezo Buzzer](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T04.%20Piezo%20Buzzer)
+  + [T05. Basic OTA DFU Src](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T05.%20Basic%20OTA%20DFU%20Src)
+  + [T05. Basic OTA](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T05.%20Basic%20OTA)
+  + [T06. OTA Web Updater DFU Src](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T06.%20OTA%20Web%20Updater%20DFU%20Src)
+  + [T06. OTA Web Updater](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T06.%20OTA%20Web%20Updater)
   + ...
