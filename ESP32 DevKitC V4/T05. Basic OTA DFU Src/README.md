@@ -12,8 +12,8 @@
  <br>
  
  ```C
- const char ssid = "//";
- const char password = "//";
+ const char* ssid = "//";
+ const char* password = "//";
  ```
  * 이 부분에서는 사용하고 있는 WiFi 공유기의 SSID와 패스워드를 입력하면 됨.
 
