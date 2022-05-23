@@ -10,27 +10,27 @@
     "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\variants\\esp32"
   },
   {
-    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\Basic_OTA_DFU_Src_Test.ino.cpp",
+    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\OTA_Web_Updater_DFU_Src_Test.ino.cpp",
     "Include": "WiFi.h",
     "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\WiFi\\src"
   },
   {
-    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\Basic_OTA_DFU_Src_Test.ino.cpp",
+    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\OTA_Web_Updater_DFU_Src_Test.ino.cpp",
+    "Include": "WebServer.h",
+    "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\WebServer\\src"
+  },
+  {
+    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\OTA_Web_Updater_DFU_Src_Test.ino.cpp",
     "Include": "ESPmDNS.h",
     "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\ESPmDNS\\src"
   },
   {
-    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\Basic_OTA_DFU_Src_Test.ino.cpp",
-    "Include": "ArduinoOTA.h",
-    "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\ArduinoOTA\\src"
-  },
-  {
-    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\Basic_OTA_DFU_Src_Test.ino.cpp",
+    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\OTA_Web_Updater_DFU_Src_Test.ino.cpp",
     "Include": "Update.h",
     "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\Update\\src"
   },
   {
-    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\Basic_OTA_DFU_Src_Test.ino.cpp",
+    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\OTA_Web_Updater_DFU_Src_Test.ino.cpp",
     "Include": "",
     "Includepath": null
   },
@@ -80,12 +80,27 @@
     "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\ESPmDNS\\src\\ESPmDNS.cpp",
+    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\WebServer\\src\\Parsing.cpp",
     "Include": "",
     "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\ArduinoOTA\\src\\ArduinoOTA.cpp",
+    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\WebServer\\src\\WebServer.cpp",
+    "Include": "FS.h",
+    "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\FS\\src"
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\WebServer\\src\\WebServer.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\WebServer\\src\\detail\\mimetable.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\ESPmDNS\\src\\ESPmDNS.cpp",
     "Include": "",
     "Includepath": null
   },
@@ -96,6 +111,16 @@
   },
   {
     "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\Update\\src\\Updater.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\FS\\src\\FS.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\FS\\src\\vfs_api.cpp",
     "Include": "",
     "Includepath": null
   }
