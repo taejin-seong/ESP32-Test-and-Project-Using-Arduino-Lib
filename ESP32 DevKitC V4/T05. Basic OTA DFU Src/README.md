@@ -6,7 +6,7 @@
 [Basic_OTA_DFU_Src_Test.ino](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T05.%20Basic%20OTA%20DFU%20Src)
  는 `Examples for ESP32 Module` → `ArduinoOTA` → **`BasicOTA.ino`** 예제를 참고함.
  
-새로 업데이트 되는 펌웨어가 다음번에도 OTA를 수행할 수 있도록 하려면 **기존 OTA 프로그램의 틀은 그대로 유지하고** 업로드 이후 동작할 내역들만 바꿔줘야함.
+새로 업데이트 되는 펌웨어가 다음번에도 OTA DFU를 수행할 수 있도록 하려면 **기존 OTA 프로그램의 틀은 그대로 유지하고** 업로드 이후 동작할 내역들만 바꿔줘야함.
  
  <br>
  <br>
