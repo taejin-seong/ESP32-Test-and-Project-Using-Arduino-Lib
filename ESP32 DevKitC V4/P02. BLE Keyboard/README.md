@@ -8,18 +8,47 @@
 ### IDE
 * VSCode 
 
-### 개발 보드
-* [**ESP32 DevKitC V4**](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-devkitc.html) 
-
 ### 사용한 라이브러리
 * [ESP32 BLE Keyboard library](https://github.com/T-vK/ESP32-BLE-Keyboard)
 
+### 개발 보드
+* [ESP32 DevKitC V4](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-devkitc.html) 
+
+### 부품
+* [Tact switch](https://www.devicemart.co.kr/goods/view?no=2206) (4EA)
+
 <br>
 
-## 추가적인 구현방안
+## 하드웨어 구성
 
-* `BleKeyboard.h`의 아래의 키조합 변수를 이용하여 키보드의 자판 배열을 구성해볼 수 있습니다.
+* ESP32 내의 내부 풀업저항 사용.
+
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/70312248/170076108-758a5f89-eb14-4784-a859-ca3225a7b141.png" width="471" height="507"/>  
+</p>
+<br>
+
+                                                                                                                                      
+## 동작 방식
+
+* **버튼 1**를 누르면 검색창 또는 텍스트 편집기에 Hello World!가 쓰여짐.
+
+* **버튼 2**를 누르면 현재의 millis() 시간을 전송함.
+
+* **버튼 3**를 누르면 키보드의 Enter 키를 수행함.
+
+* 미디어 플레이 장치가 작동할 때 **버튼 4**를 누르면 재생/정지를 수행함.
+                                                                                                                                    
+<br>                                                                                                                                                                    
+
+## 추가적인 구현 방안
+
+* [BleKeyboard.h](https://github.com/T-vK/ESP32-BLE-Keyboard/blob/master/BleKeyboard.h)의 키조합 변수를 이용하여 키보드의 자판 배열을 구성해볼 수 있음.
+
+* [BleKeyboard.h](https://github.com/T-vK/ESP32-BLE-Keyboard/blob/master/BleKeyboard.h)의 36행 ~ 120행 참고
 ```C
+/* BleKeyboard.h의 36행 ~ 120행 */
+
 const uint8_t KEY_LEFT_CTRL = 0x80;
 const uint8_t KEY_LEFT_SHIFT = 0x81;
 const uint8_t KEY_LEFT_ALT = 0x82;
@@ -105,5 +134,4 @@ const MediaKeyReport KEY_MEDIA_WWW_STOP = {0, 16};
 const MediaKeyReport KEY_MEDIA_WWW_BACK = {0, 32};
 const MediaKeyReport KEY_MEDIA_CONSUMER_CONTROL_CONFIGURATION = {0, 64}; // Media Selection
 const MediaKeyReport KEY_MEDIA_EMAIL_READER = {0, 128};
-
 ```
