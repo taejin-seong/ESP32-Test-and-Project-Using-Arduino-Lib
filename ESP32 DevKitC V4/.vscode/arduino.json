@@ -1,5 +1,5 @@
 {
-    "sketch": "T06. OTA Web Updater DFU Src\\OTA_Web_Updater_DFU_Src_Test.ino",
+    "sketch": "P02. BLE Keyboard\\BLE_Keyboard.ino",
     "board": "esp32:esp32:esp32",
     "port": "COM3",
     "output": ".\\build"

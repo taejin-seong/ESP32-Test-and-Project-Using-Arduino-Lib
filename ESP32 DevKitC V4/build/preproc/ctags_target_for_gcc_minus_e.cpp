@@ -1,189 +1,76 @@
-# 1 "d:\\ESP32\\ESP32 DevKitC V4\\T06. OTA Web Updater DFU Src\\OTA_Web_Updater_DFU_Src_Test.ino"
-# 2 "d:\\ESP32\\ESP32 DevKitC V4\\T06. OTA Web Updater DFU Src\\OTA_Web_Updater_DFU_Src_Test.ino" 2
-# 3 "d:\\ESP32\\ESP32 DevKitC V4\\T06. OTA Web Updater DFU Src\\OTA_Web_Updater_DFU_Src_Test.ino" 2
-# 4 "d:\\ESP32\\ESP32 DevKitC V4\\T06. OTA Web Updater DFU Src\\OTA_Web_Updater_DFU_Src_Test.ino" 2
-# 5 "d:\\ESP32\\ESP32 DevKitC V4\\T06. OTA Web Updater DFU Src\\OTA_Web_Updater_DFU_Src_Test.ino" 2
-# 6 "d:\\ESP32\\ESP32 DevKitC V4\\T06. OTA Web Updater DFU Src\\OTA_Web_Updater_DFU_Src_Test.ino" 2
+# 1 "d:\\ESP32\\ESP32 DevKitC V4\\P02. BLE Keyboard\\BLE_Keyboard.ino"
+/**
 
-/* LED */
-
-int ledState = 0x0;
-
-const char* host = "esp32";
-const char* ssid = "//";
-const char* password = "//";
-
-WebServer server(80);
-
-/*
-
- * Login page
+ * This example turns the ESP32 into a Bluetooth LE keyboard that writes the words, presses Enter, presses a media key and then Ctrl+Alt+Delete
 
  */
-# 21 "d:\\ESP32\\ESP32 DevKitC V4\\T06. OTA Web Updater DFU Src\\OTA_Web_Updater_DFU_Src_Test.ino"
-const char* loginIndex =
- "<form name='loginForm'>"
-    "<table width='20%' bgcolor='A09F9F' align='center'>"
-        "<tr>"
-            "<td colspan=2>"
-                "<center><font size=4><b>ESP32 Login Page</b></font></center>"
-                "<br>"
-            "</td>"
-            "<br>"
-            "<br>"
-        "</tr>"
-        "<tr>"
-             "<td>Username:</td>"
-             "<td><input type='text' size=25 name='userid'><br></td>"
-        "</tr>"
-        "<br>"
-        "<br>"
-        "<tr>"
-            "<td>Password:</td>"
-            "<td><input type='Password' size=25 name='pwd'><br></td>"
-            "<br>"
-            "<br>"
-        "</tr>"
-        "<tr>"
-            "<td><input type='submit' onclick='check(this.form)' value='Login'></td>"
-        "</tr>"
-    "</table>"
-"</form>"
-"<script>"
-    "function check(form)"
-    "{"
-    "if(form.userid.value=='admin' && form.pwd.value=='admin')" // initial username, password = admin, admin 
-    "{"
-    "window.open('/serverIndex')"
-    "}"
-    "else"
-    "{"
-    " alert('Error Password or Username')/*displays error message*/"
-    "}"
-    "}"
-"</script>";
+# 4 "d:\\ESP32\\ESP32 DevKitC V4\\P02. BLE Keyboard\\BLE_Keyboard.ino"
+# 5 "d:\\ESP32\\ESP32 DevKitC V4\\P02. BLE Keyboard\\BLE_Keyboard.ino" 2
 
-/*
+BleKeyboard bleKeyboard;
 
- * Server Index Page
 
- */
-# 67 "d:\\ESP32\\ESP32 DevKitC V4\\T06. OTA Web Updater DFU Src\\OTA_Web_Updater_DFU_Src_Test.ino"
-const char* serverIndex =
-"<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>"
-"<form method='POST' action='#' enctype='multipart/form-data' id='upload_form'>"
-   "<input type='file' name='update'>"
-        "<input type='submit' value='Update'>"
-    "</form>"
- "<div id='prg'>progress: 0%</div>"
- "<script>"
-  "$('form').submit(function(e){"
-  "e.preventDefault();"
-  "var form = $('#upload_form')[0];"
-  "var data = new FormData(form);"
-  " $.ajax({"
-  "url: '/update',"
-  "type: 'POST',"
-  "data: data,"
-  "contentType: false,"
-  "processData:false,"
-  "xhr: function() {"
-  "var xhr = new window.XMLHttpRequest();"
-  "xhr.upload.addEventListener('progress', function(evt) {"
-  "if (evt.lengthComputable) {"
-  "var per = evt.loaded / evt.total;"
-  "$('#prg').html('progress: ' + Math.round(per*100) + '%');"
-  "}"
-  "}, false);"
-  "return xhr;"
-  "},"
-  "success:function(d, s) {"
-  "console.log('success!')"
- "},"
- "error: function (a, b, c) {"
- "}"
- "});"
- "});"
- "</script>";
 
-/*
 
- * setup function
 
- */
-# 107 "d:\\ESP32\\ESP32 DevKitC V4\\T06. OTA Web Updater DFU Src\\OTA_Web_Updater_DFU_Src_Test.ino"
-void setup(void) {
+
+int pre_btn1_status;
+int pre_btn2_status;
+int pre_btn3_status;
+int pre_btn4_status;
+
+void setup() {
   Serial.begin(115200);
+  Serial.println("Starting BLE work!");
+  bleKeyboard.begin();
 
-  // Connect to WiFi network
-  WiFi.begin(ssid, password);
-  Serial.println("");
+  pinMode(23, 0x05);
+  pinMode(19, 0x05);
+  pinMode(5, 0x05);
+  pinMode(18, 0x05);
 
-  // Wait for connection
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("");
-  Serial.print("Connected to ");
-  Serial.println(ssid);
-  Serial.print("IP address: ");
-  Serial.println(WiFi.localIP());
-
-  /*use mdns for host name resolution*/
-  if (!MDNS.begin(host)) { //http://esp32.local
-    Serial.println("Error setting up MDNS responder!");
-    while (1) {
-      delay(1000);
-    }
-  }
-  Serial.println("mDNS responder started");
-  /*return index page which is stored in serverIndex */
-  server.on("/", HTTP_GET, []() {
-    server.sendHeader("Connection", "close");
-    server.send(200, "text/html", loginIndex);
-  });
-  server.on("/serverIndex", HTTP_GET, []() {
-    server.sendHeader("Connection", "close");
-    server.send(200, "text/html", serverIndex);
-  });
-  /*handling uploading firmware file */
-  server.on("/update", HTTP_POST, []() {
-    server.sendHeader("Connection", "close");
-    server.send(200, "text/plain", (Update.hasError()) ? "FAIL" : "OK");
-    ESP.restart();
-  }, []() {
-    HTTPUpload& upload = server.upload();
-    if (upload.status == UPLOAD_FILE_START) {
-      Serial.printf("Update: %s\n", upload.filename.c_str());
-      if (!Update.begin(0xFFFFFFFF)) { //start with max available size
-        Update.printError(Serial);
-      }
-    } else if (upload.status == UPLOAD_FILE_WRITE) {
-      /* flashing firmware to ESP*/
-      if (Update.write(upload.buf, upload.currentSize) != upload.currentSize) {
-        Update.printError(Serial);
-      }
-    } else if (upload.status == UPLOAD_FILE_END) {
-      if (Update.end(true)) { //true to set the size to the current progress
-        Serial.printf("Update Success: %u\nRebooting...\n", upload.totalSize);
-      } else {
-        Update.printError(Serial);
-      }
-    }
-  });
-  server.begin();
-
-   /* LED */
-  pinMode(18 /*ESP32 pin GPIO18 connected to LED*/, 0x03);
+  pre_btn1_status = digitalRead(23);
+  pre_btn2_status = digitalRead(19);
+  pre_btn3_status = digitalRead(5);
+  pre_btn4_status = digitalRead(18);
 }
 
-void loop(void) {
-  server.handleClient();
-  delay(1);
+void loop() {
+    while (bleKeyboard.isConnected())
+    {
+        int btn1_status = digitalRead(23);
+        int btn2_status = digitalRead(19);
+        int btn3_status = digitalRead(5);
+        int btn4_status = digitalRead(18);
 
-  /* LED Blink */
-  digitalWrite(18 /*ESP32 pin GPIO18 connected to LED*/, ledState);
-  ledState = !ledState;
-  delay(1000);
+        if ( (pre_btn1_status == 0x1) && (btn1_status == 0x0) )
+        {
+            bleKeyboard.print("Hello World!"); // 1번 버튼을 누를 경우 Hello World! 전송
+            bleKeyboard.releaseAll();
+        }
+
+        if ( (pre_btn2_status == 0x1) && (btn2_status == 0x0) )
+        {
+            bleKeyboard.print(millis()); // 2번 버튼을 누를 경우 현재의 millis() 시간을 전송.
+            bleKeyboard.releaseAll();
+        }
+
+        if ( (pre_btn3_status == 0x1) && (btn3_status == 0x0) )
+        {
+            bleKeyboard.write(KEY_RETURN); // 3번 버튼을 누를 경우 키보드의 Enter 키를 누름.
+            bleKeyboard.releaseAll();
+        }
+
+        if ( (pre_btn4_status == 0x1) && (btn4_status == 0x0) )
+        {
+            bleKeyboard.write(KEY_MEDIA_PLAY_PAUSE); // 4번 버튼을 누를 경우 미디어키 재생/정지 버튼을 누름
+            bleKeyboard.releaseAll();
+        }
+
+        pre_btn1_status = btn1_status;
+        pre_btn2_status = btn2_status;
+        pre_btn3_status = btn3_status;
+        pre_btn4_status = btn4_status;
+
+    }
 }
