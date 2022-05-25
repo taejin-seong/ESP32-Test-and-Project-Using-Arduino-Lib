@@ -1,5 +1,5 @@
 {
-    "sketch": "P02. BLE Keyboard\\BLE_Keyboard.ino",
+    "sketch": "T08. MPU6050\\MPU6050_Test.ino",
     "board": "esp32:esp32:esp32",
     "port": "COM3",
     "output": ".\\build"

@@ -1,76 +1,184 @@
-# 1 "d:\\ESP32\\ESP32 DevKitC V4\\P02. BLE Keyboard\\BLE_Keyboard.ino"
-/**
+# 1 "d:\\ESP32\\ESP32 DevKitC V4\\T08. MPU6050\\MPU6050_Test.ino"
+// I2C device class (I2Cdev) demonstration Arduino sketch for MPU6050 class
+// 10/7/2011 by Jeff Rowberg <jeff@rowberg.net>
+// Updates should (hopefully) always be available at https://github.com/jrowberg/i2cdevlib
+//
+// Changelog:
+//      2013-05-08 - added multiple output formats
+//                 - added seamless Fastwire support
+//      2011-10-07 - initial release
 
- * This example turns the ESP32 into a Bluetooth LE keyboard that writes the words, presses Enter, presses a media key and then Ctrl+Alt+Delete
+/* ============================================
 
- */
-# 4 "d:\\ESP32\\ESP32 DevKitC V4\\P02. BLE Keyboard\\BLE_Keyboard.ino"
-# 5 "d:\\ESP32\\ESP32 DevKitC V4\\P02. BLE Keyboard\\BLE_Keyboard.ino" 2
+I2Cdev device library code is placed under the MIT license
 
-BleKeyboard bleKeyboard;
+Copyright (c) 2011 Jeff Rowberg
 
 
 
+Permission is hereby granted, free of charge, to any person obtaining a copy
+
+of this software and associated documentation files (the "Software"), to deal
+
+in the Software without restriction, including without limitation the rights
+
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+
+copies of the Software, and to permit persons to whom the Software is
+
+furnished to do so, subject to the following conditions:
 
 
 
-int pre_btn1_status;
-int pre_btn2_status;
-int pre_btn3_status;
-int pre_btn4_status;
+The above copyright notice and this permission notice shall be included in
+
+all copies or substantial portions of the Software.
+
+
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+
+THE SOFTWARE.
+
+===============================================
+
+*/
+# 34 "d:\\ESP32\\ESP32 DevKitC V4\\T08. MPU6050\\MPU6050_Test.ino"
+// I2Cdev and MPU6050 must be installed as libraries, or else the .cpp/.h files
+// for both classes must be in the include path of your project
+# 37 "d:\\ESP32\\ESP32 DevKitC V4\\T08. MPU6050\\MPU6050_Test.ino" 2
+# 38 "d:\\ESP32\\ESP32 DevKitC V4\\T08. MPU6050\\MPU6050_Test.ino" 2
+
+// Arduino Wire library is required if I2Cdev I2CDEV_ARDUINO_WIRE implementation
+// is used in I2Cdev.h
+
+# 43 "d:\\ESP32\\ESP32 DevKitC V4\\T08. MPU6050\\MPU6050_Test.ino" 2
+
+
+// class default I2C address is 0x68
+// specific I2C addresses may be passed as a parameter here
+// AD0 low = 0x68 (default for InvenSense evaluation board)
+// AD0 high = 0x69
+MPU6050 accelgyro;
+//MPU6050 accelgyro(0x69); // <-- use for AD0 high
+
+int16_t ax, ay, az;
+int16_t gx, gy, gz;
+
+
+
+// uncomment "OUTPUT_READABLE_ACCELGYRO" if you want to see a tab-separated
+// list of the accel X/Y/Z and then gyro X/Y/Z values in decimal. Easy to read,
+// not so easy to parse, and slow(er) over UART.
+
+
+// uncomment "OUTPUT_BINARY_ACCELGYRO" to send all 6 axes of data as 16-bit
+// binary, one right after the other. This is very fast (as fast as possible
+// without compression or data loss), and easy to parse, but impossible to read
+// for a human.
+//#define OUTPUT_BINARY_ACCELGYRO
+
+
+
+bool blinkState = false;
 
 void setup() {
-  Serial.begin(115200);
-  Serial.println("Starting BLE work!");
-  bleKeyboard.begin();
+    // join I2C bus (I2Cdev library doesn't do this automatically)
 
-  pinMode(23, 0x05);
-  pinMode(19, 0x05);
-  pinMode(5, 0x05);
-  pinMode(18, 0x05);
+        Wire.begin();
 
-  pre_btn1_status = digitalRead(23);
-  pre_btn2_status = digitalRead(19);
-  pre_btn3_status = digitalRead(5);
-  pre_btn4_status = digitalRead(18);
+
+
+
+    // initialize serial communication
+    // (38400 chosen because it works as well at 8MHz as it does at 16MHz, but
+    // it's really up to you depending on your project)
+    Serial.begin(115200);
+
+    // initialize device
+    Serial.println("Initializing I2C devices...");
+    accelgyro.initialize();
+
+    // verify connection
+    Serial.println("Testing device connections...");
+    Serial.println(accelgyro.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
+
+    // use the code below to change accel/gyro offset values
+    /*
+
+    Serial.println("Updating internal sensor offsets...");
+
+    // -76	-2359	1688	0	0	0
+
+    Serial.print(accelgyro.getXAccelOffset()); Serial.print("\t"); // -76
+
+    Serial.print(accelgyro.getYAccelOffset()); Serial.print("\t"); // -2359
+
+    Serial.print(accelgyro.getZAccelOffset()); Serial.print("\t"); // 1688
+
+    Serial.print(accelgyro.getXGyroOffset()); Serial.print("\t"); // 0
+
+    Serial.print(accelgyro.getYGyroOffset()); Serial.print("\t"); // 0
+
+    Serial.print(accelgyro.getZGyroOffset()); Serial.print("\t"); // 0
+
+    Serial.print("\n");
+
+    accelgyro.setXGyroOffset(220);
+
+    accelgyro.setYGyroOffset(76);
+
+    accelgyro.setZGyroOffset(-85);
+
+    Serial.print(accelgyro.getXAccelOffset()); Serial.print("\t"); // -76
+
+    Serial.print(accelgyro.getYAccelOffset()); Serial.print("\t"); // -2359
+
+    Serial.print(accelgyro.getZAccelOffset()); Serial.print("\t"); // 1688
+
+    Serial.print(accelgyro.getXGyroOffset()); Serial.print("\t"); // 0
+
+    Serial.print(accelgyro.getYGyroOffset()); Serial.print("\t"); // 0
+
+    Serial.print(accelgyro.getZGyroOffset()); Serial.print("\t"); // 0
+
+    Serial.print("\n");
+
+    */
+# 116 "d:\\ESP32\\ESP32 DevKitC V4\\T08. MPU6050\\MPU6050_Test.ino"
+    // configure Arduino LED pin for output
+    pinMode(13, 0x03);
 }
 
 void loop() {
-    while (bleKeyboard.isConnected())
-    {
-        int btn1_status = digitalRead(23);
-        int btn2_status = digitalRead(19);
-        int btn3_status = digitalRead(5);
-        int btn4_status = digitalRead(18);
+    // read raw accel/gyro measurements from device
+    accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 
-        if ( (pre_btn1_status == 0x1) && (btn1_status == 0x0) )
-        {
-            bleKeyboard.print("Hello World!"); // 1번 버튼을 누를 경우 Hello World! 전송
-            bleKeyboard.releaseAll();
-        }
+    // these methods (and a few others) are also available
+    //accelgyro.getAcceleration(&ax, &ay, &az);
+    //accelgyro.getRotation(&gx, &gy, &gz);
 
-        if ( (pre_btn2_status == 0x1) && (btn2_status == 0x0) )
-        {
-            bleKeyboard.print(millis()); // 2번 버튼을 누를 경우 현재의 millis() 시간을 전송.
-            bleKeyboard.releaseAll();
-        }
 
-        if ( (pre_btn3_status == 0x1) && (btn3_status == 0x0) )
-        {
-            bleKeyboard.write(KEY_RETURN); // 3번 버튼을 누를 경우 키보드의 Enter 키를 누름.
-            bleKeyboard.releaseAll();
-        }
-
-        if ( (pre_btn4_status == 0x1) && (btn4_status == 0x0) )
-        {
-            bleKeyboard.write(KEY_MEDIA_PLAY_PAUSE); // 4번 버튼을 누를 경우 미디어키 재생/정지 버튼을 누름
-            bleKeyboard.releaseAll();
-        }
-
-        pre_btn1_status = btn1_status;
-        pre_btn2_status = btn2_status;
-        pre_btn3_status = btn3_status;
-        pre_btn4_status = btn4_status;
-
-    }
+        // display tab-separated accel/gyro x/y/z values
+        Serial.print("a/g:\t");
+        Serial.print(ax); Serial.print("\t");
+        Serial.print(ay); Serial.print("\t");
+        Serial.print(az); Serial.print("\t");
+        Serial.print(gx); Serial.print("\t");
+        Serial.print(gy); Serial.print("\t");
+        Serial.println(gz);
+# 148 "d:\\ESP32\\ESP32 DevKitC V4\\T08. MPU6050\\MPU6050_Test.ino"
+    // blink LED to indicate activity
+    blinkState = !blinkState;
+    digitalWrite(13, blinkState);
 }
