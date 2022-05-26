@@ -127,8 +127,5 @@ d:\ESP32\ESP32\ DevKitC\ V4\build\sketch\MPU6050_Test.ino.cpp.o: \
  C:\Users\user\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.3/tools/sdk/esp32/include/spi_flash/include/esp_spi_flash_counters.h \
  C:\Users\user\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.3/tools/sdk/esp32/include/esp_hw_support/include/soc/esp32/spiram.h \
  C:\Users\user\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.3\variants\esp32/pins_arduino.h \
- C:\Users\user\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.3\libraries\MPU6050\src/I2Cdev.h \
  C:\Users\user\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.3\libraries\Wire\src/Wire.h \
- C:\Users\user\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.3\cores\esp32/esp32-hal.h \
- C:\Users\user\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.3\libraries\MPU6050\src/MPU6050.h \
- C:\Users\user\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.3\libraries\MPU6050\src/I2Cdev.h
+ C:\Users\user\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.3\cores\esp32/esp32-hal.h

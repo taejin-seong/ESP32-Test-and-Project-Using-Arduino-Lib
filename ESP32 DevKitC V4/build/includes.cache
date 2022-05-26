@@ -11,26 +11,11 @@
   },
   {
     "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\MPU6050_Test.ino.cpp",
-    "Include": "I2Cdev.h",
-    "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\MPU6050\\src"
-  },
-  {
-    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\MPU6050_Test.ino.cpp",
     "Include": "Wire.h",
     "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\Wire\\src"
   },
   {
     "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\MPU6050_Test.ino.cpp",
-    "Include": "",
-    "Includepath": null
-  },
-  {
-    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\MPU6050\\src\\I2Cdev.cpp",
-    "Include": "",
-    "Includepath": null
-  },
-  {
-    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\MPU6050\\src\\MPU6050.cpp",
     "Include": "",
     "Includepath": null
   },
