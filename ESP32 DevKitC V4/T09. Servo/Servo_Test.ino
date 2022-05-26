@@ -3,7 +3,6 @@
 static const int SERVO_PIN1 = 17; //ESP32 pin GIOP19 (PWM) connected to Servo Motor
 
 Servo servo1;
-Servo servo2;
 
 void setup() {
     Serial.begin(115200);
