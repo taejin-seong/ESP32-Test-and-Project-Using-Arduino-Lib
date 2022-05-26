@@ -1,5 +1,5 @@
 {
-    "sketch": "T08. MPU6050\\MPU6050_Test.ino",
+    "sketch": "T10. ESP32 BLE Slave\\BLE_Serial_Slave_Test.ino",
     "board": "esp32:esp32:esp32",
     "port": "COM3",
     "output": ".\\build"
