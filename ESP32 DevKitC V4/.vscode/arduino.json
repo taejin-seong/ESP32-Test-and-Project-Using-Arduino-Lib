@@ -1,5 +1,5 @@
 {
-    "sketch": "T10. ESP32 BLE Slave\\BLE_Serial_Slave_Test.ino",
+    "sketch": "T11. Joystick\\Joystick_Test.ino",
     "board": "esp32:esp32:esp32",
     "port": "COM3",
     "output": ".\\build"

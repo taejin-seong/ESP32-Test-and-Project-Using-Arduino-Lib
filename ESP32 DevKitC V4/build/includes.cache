@@ -10,32 +10,7 @@
     "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\variants\\esp32"
   },
   {
-    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\BLE_Serial_Slave_Test.ino.cpp",
-    "Include": "BluetoothSerial.h",
-    "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\BluetoothSerial\\src"
-  },
-  {
-    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\BLE_Serial_Slave_Test.ino.cpp",
-    "Include": "",
-    "Includepath": null
-  },
-  {
-    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\BluetoothSerial\\src\\BTAddress.cpp",
-    "Include": "",
-    "Includepath": null
-  },
-  {
-    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\BluetoothSerial\\src\\BTAdvertisedDeviceSet.cpp",
-    "Include": "",
-    "Includepath": null
-  },
-  {
-    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\BluetoothSerial\\src\\BTScanResultsSet.cpp",
-    "Include": "",
-    "Includepath": null
-  },
-  {
-    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\BluetoothSerial\\src\\BluetoothSerial.cpp",
+    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\Joystick_Test.ino.cpp",
     "Include": "",
     "Includepath": null
   }
