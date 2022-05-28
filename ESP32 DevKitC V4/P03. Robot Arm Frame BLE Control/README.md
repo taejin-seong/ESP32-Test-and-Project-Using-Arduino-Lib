@@ -35,7 +35,7 @@
    <img src="https://user-images.githubusercontent.com/70312248/170819835-35f05298-6f7d-4936-895a-6e1cce9b8b44.png" width="790" height="500"/>  
 </p> 
 
-* Roll, Pitch 값의 범위에 따라 **G, Back, Right, Left** 를 선정하여 제어 신호를 결정
+* Roll, Pitch 값의 범위에 따라 **Go, Back, Right, Left** 를 선정하여 제어 신호를 결정
 
 * 컨트롤러에서 로봇팔 프레임 제어부로 **제어 신호**를 블루투스 전송
 
