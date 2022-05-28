@@ -32,7 +32,7 @@
 ## 동작 방식
 <br>
 <p align="center">
-   <img src="https://user-images.githubusercontent.com/70312248/170818698-a547ae36-26e0-4ac5-ad15-fe597f77e99c.png" width="786" height="500"/>  
+   <img src="https://user-images.githubusercontent.com/70312248/170819835-35f05298-6f7d-4936-895a-6e1cce9b8b44.png" width="790" height="500"/>  
 </p> 
 
 * Roll, Pitch 값의 범위에 따라 **GO, Back, Right, Left** 를 선정하여 제어 신호를 결정
