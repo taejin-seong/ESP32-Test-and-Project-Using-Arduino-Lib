@@ -26,7 +26,7 @@
   + [P03. Robot Arm Frame BLE Control](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/P03.%20Robot%20Arm%20Frame%20BLE%20Control)
   + [T01. LED Blink](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T01.%20LED%20Blink)
   + [T02. CDS Sensor](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T02.%20CDS%20Sensor)
-  + [T03. ESP32_TCP_Client](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T03.%20ESP32_TCP_Client)
+  + [T03. ESP32_TCP_Client](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/blob/master/ESP32%20DevKitC%20V4/T03.%20Python%20TCP%20Server/Server_Test.py)
   + [T03. Python_TCP_Server](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T03.%20Python_TCP_Server)
   + [T04. Piezo Buzzer](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T04.%20Piezo%20Buzzer)
   + [T05. Basic OTA DFU Src](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T05.%20Basic%20OTA%20DFU%20Src)
