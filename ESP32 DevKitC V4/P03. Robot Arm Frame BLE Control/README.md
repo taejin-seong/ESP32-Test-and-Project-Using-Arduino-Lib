@@ -29,15 +29,24 @@
 <br>
 
 
-
 ## 동작 방식
+<br>
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/70312248/170818698-a547ae36-26e0-4ac5-ad15-fe597f77e99c.png" width="786" height="500"/>  
+</p> 
 
+* Roll, Pitch 값의 범위에 따라 **GO, Back, Right, Left** 를 선정하여 제어 신호를 결정
+
+* 컨트롤러에서 로봇팔 프레임 제어부로 **제어 신호**를 블루투스 전송
+
+* 로봇팔 프레임 제어부에서는 **Go**, **Back** 신호를 받았다면 **상측부의 서보모터**를 제어, **Right**, **Left** 신호를 받았다면 **하측부 서보모터**를 제어
 
 <br>
 
-## 동작 결과
-
-<br>
 
 ## 동작 영상
+
+https://user-images.githubusercontent.com/70312248/170819375-8886ab9d-11d3-42e4-a4cb-bfccf9408b28.mp4
+
+* 상측부 제어 영상
 
