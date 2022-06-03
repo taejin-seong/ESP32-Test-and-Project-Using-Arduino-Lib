@@ -1,4 +1,5 @@
 {
+    "sketch": "T12. DHT11\\DHT11_Test.ino",
     "board": "esp32:esp32:esp32",
     "port": "COM3"
 }
