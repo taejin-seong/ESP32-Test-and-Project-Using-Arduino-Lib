@@ -39,4 +39,6 @@
   + [T10. ESP32 BLE Master](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T10.%20ESP32%20BLE%20Master)
   + [T10. ESP32 BLE Slave](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T10.%20ESP32%20BLE%20Slave)
   + [T11. Joystick](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T11.%20Joystick)
+  + [T12. DHT11](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T12.%20DHT11)
+  + [T13. 16X2 LCD with I2C](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/tree/master/ESP32%20DevKitC%20V4/T13.%2016X2%20LCD%20with%20I2C)
   + ...
