@@ -1,5 +1,6 @@
 {
-    "sketch": "T12. DHT11\\DHT11_Test.ino",
+    "sketch": "T14. ESP32 MQTT Publish\\ESP32_MQTT_Publish_Test.ino",
     "board": "esp32:esp32:esp32",
-    "port": "COM3"
+    "port": "COM3",
+    "output": ".\\build"
 }
