@@ -1,5 +1,5 @@
 {
-    "sketch": "T14. ESP32 MQTT Publish\\ESP32_MQTT_Publish_Test.ino",
+    "sketch": "P04. IOT Thermo-Hygrometer\\TH_Sensor_MQTT_Pub.ino",
     "board": "esp32:esp32:esp32",
     "port": "COM3",
     "output": ".\\build"

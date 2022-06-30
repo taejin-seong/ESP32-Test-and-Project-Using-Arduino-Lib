@@ -10,17 +10,22 @@
     "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\variants\\esp32"
   },
   {
-    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\ESP32_MQTT_Publish_Test.ino.cpp",
+    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\TH_Sensor_MQTT_Pub.ino.cpp",
     "Include": "WiFi.h",
     "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\WiFi\\src"
   },
   {
-    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\ESP32_MQTT_Publish_Test.ino.cpp",
+    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\TH_Sensor_MQTT_Pub.ino.cpp",
     "Include": "PubSubClient.h",
     "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\PubSubClient\\src"
   },
   {
-    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\ESP32_MQTT_Publish_Test.ino.cpp",
+    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\TH_Sensor_MQTT_Pub.ino.cpp",
+    "Include": "DHT.h",
+    "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\DHTSensorLibrary"
+  },
+  {
+    "Sourcefile": "d:\\ESP32\\ESP32 DevKitC V4\\build\\sketch\\TH_Sensor_MQTT_Pub.ino.cpp",
     "Include": "",
     "Includepath": null
   },
@@ -71,6 +76,11 @@
   },
   {
     "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\PubSubClient\\src\\PubSubClient.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.3\\libraries\\DHTSensorLibrary\\DHT.cpp",
     "Include": "",
     "Includepath": null
   }
