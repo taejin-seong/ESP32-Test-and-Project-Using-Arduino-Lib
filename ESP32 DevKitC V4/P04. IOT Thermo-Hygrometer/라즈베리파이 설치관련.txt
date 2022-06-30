@@ -1,0 +1,91 @@
+1. 라즈베리파이에 MQTT mosquitto 브로커 서버 설치
+
+1-1. 시스템 업데이트
+$ sudo apt-get update
+$ sudo apt-get upgrade
+
+1-2. 모스키토 설치
+$ sudo apt-get install mosquitto
+$ sudo apt-get install mosquitto-clients
+
+1-3. 서버동작 시작
+$ sudo /etc/init.d/mosquitto start
+
+1-4. 두 개의 터미널로 통신 테스트
+Terminal 1
+$ mosquitto_sub -d -t /test
+
+Terminal 2
+$ mosquitto_pub -d -t /test -m "Hello!"
+
+Terminal 3
+Node-RED로 테스트
+
+==============================================================================================
+
+2. 라즈베리파이에 Node-RED 설치 및 실행 
+
+2-1. 시스템 업데이트
+$ sudo apt-get update
+$ sudo apt-get upgrade 
+
+2-2. Node-RED 라이브러리를 받아서 설치
+$ bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+
+명령어  실행 중간에 두 번의 질문에 모두 Y로 답하기
+Are you really sure you want to do this ? [y/N] ? Y
+Would you like to install the Pi-specific nodes ? [y/N] ? Y
+
+2-3. 라즈베리파이에서 Node-RED를 Service로 시작하기
+$ node-red-start
+
+주의 : Node-RED를 "node-red-start" 명령으로 시작한 경우, 명령이 실행된 다음 log 메세지가 출력된 상태이기 때문에 터미널 명령 대기 상태로 가기 위하여는 Crl+C를 입력하여야 함.
+
+2-4. 라즈베리파이에 Node-RED 실행을 정지 시키기는 명령
+$ node-red-stop
+
+2-5. 라즈베리파이 시작시 자동으로 Node-RED를 시작 시키는 명령
+$ sudo systemctl enable nodered.service
+
+2-6. 라즈베리파이 자동 시작을 중지하는 명령
+$ sudo systemctl enable nodered.service
+
+2-8. 웹 브라우저 등에서 다음과 같이 Node-RED가 설치된 라즈베리파이에 접속함.(Port 번호: 1880)
+- 편집기 화면
+http://라즈베리파이 ip:1880
+- 대시보드 화면
+http://라즈베리파이 ip:1880/ui
+
+
+==============================================================================================
+
+3. 라즈베리파이에 Node-RED Dashboard 설치하기
+
+Node-RED 대시 보드는 네트워크에 연결된 장치의 제어(버튼, 스위치 등을 사용)와 상태(측정 결과를 게이지, 차트 등으로 표시)을 그래픽으로 브라우저에 표시할 수 있도록 하는 추가 기능 모듈이다. 
+Node-RED 대시 보드는 선택적 모듈이기 때문에 추가로 설치하여야 한다.
+
+3-1. Dashboard 설치하기
+
+아래 명령으로 Node-RED 실행을 정지한다.
+$ bash node-red-stop
+
+3-2. 아래 명령으로 Node-RED user directory로 이동한다
+$ cd ~/.node-red
+
+3-3. 아래 명령으로 Old dashboard version "node-red-contrib-ui-i"을 삭제한다.
+$ sudo npm uninstall node-red-contrib-ui
+
+3-4. Raspberry Pi에서 다음 명령을 실행하여 Node-RED Dashboard를 설치하고 Paspberry Pi를 Reboot 한다.
+$ sudo npm install node-red-dashboard
+$ sudo reboot
+
+3-5. Web browser(PC 등)에서 다음과 같이 Node-RED가 설치된 Raspberry Pi에 접속(Port 번호: 1880)한다.
+http://라즈베리파이 ip:1880
+
+3-6. 정상적으로 설치가 완료되면 Node-RED 페이지의 좌측 팔레트(Palette) 창에 Dashboard 카테고리가 추가 된다.
+주의: 만약 Node-RED가 정지되어 접속되지 않는 경우에는 아래 명령으로 Node-RED를 실행한다.
+$ node-red-start
+
+3-7. Dashboard 정상 설치 여부를 확인하기
+Web browser(PC 등)에서 다음과 같이 Node-RED가 설치된 Raspberry Pi에 접속(Port 번호: 1880)한다.
+http://라즈베리파이 ip:1880/ui
