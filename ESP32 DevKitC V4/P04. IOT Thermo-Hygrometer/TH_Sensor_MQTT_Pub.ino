@@ -3,7 +3,7 @@
 #include "DHT.h"
 
 #define LED_PIN     18  //ESP32 pin GPIO18 connected to LED
-#define DHTPIN      33 // ESP33 pin GIOP27 (ADC1_5) connected to DHT11 
+#define DHTPIN      33 // ESP33 pin GIOP33 (ADC) connected to DHT11 
 #define DHTTYPE DHT11 
 
 DHT dht(DHTPIN, DHTTYPE);
