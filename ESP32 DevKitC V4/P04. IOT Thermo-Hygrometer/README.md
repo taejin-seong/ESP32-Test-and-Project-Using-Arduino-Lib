@@ -29,11 +29,16 @@
 <br>
 
 ### Node-RED 구성
+
 <br>
 <p align="center">
    <img src="https://user-images.githubusercontent.com/70312248/176641331-418213f3-6057-49c7-9b72-78e9329ce98f.png" width="1365" height="550"/>  
 </p> 
+
+* [클립보드](https://github.com/taejin-seong/ESP32-Test-and-Project-Using-Arduino-Lib/blob/master/ESP32%20DevKitC%20V4/P04.%20IOT%20Thermo-Hygrometer/flows.json) 소스코드 참고
+
 <br>
+
 
 
 ## 동작 방식
@@ -85,10 +90,7 @@
 <br>
 
 * 2022년 6월 30일 목요일 새벽 03:49 여름, 장마철로 인해 계속 비가 오는 중
-* 서울 습도 97%, 외부 온도 22.4도, 체감온도 25.5도 
- 
- <br>
-   
+* 서울 습도 97%, 외부 온도 22.4도, 체감온도 25.5도  
 * **테스트는 거주 중인 방안에서 실행되었으며** 컴퓨터 2대, 모니터 3대, 그외 각종 전자기기 등이 작동 중. 냉방장치 (에어컨, 선풍기)는 작동하지 않은 상태.
      따라서 대략 30~31도가 나오는 것이 맞음.
     
